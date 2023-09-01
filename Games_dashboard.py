@@ -35,6 +35,7 @@ def load_data():
         df = pd.read_csv("Top_RG_{}.csv".format(year))
         dfs.append(df)
     df_Toprelease = pd.concat(dfs, ignore_index = True)
+    
     #Transform Data
     df_Toprelease['Release'] = pd.to_datetime(df_Toprelease['Release'])
     df_Rg_month['DateTime'] = pd.to_datetime(df_Rg_month['DateTime'])
@@ -50,8 +51,6 @@ df_Rg_month,df_Rg_year, df_Tags_Steam,df_Toprelease,Startime_df_Rg_month = load_
 
 #Build Dashboard
 #sidebar
-if 'my_button' not in st.session_state:
-    st.session_state.my_button = True
 option = st.sidebar.write("Select the option")
 option = st.sidebar.radio(
         "",
@@ -60,6 +59,8 @@ option = st.sidebar.radio(
 
 
 #Total layout
+
+#Release layout
 if option == "Release":
     #For Histogram init value
     x_month = []
@@ -151,9 +152,8 @@ if option == "Release":
         df_Rg_year_ind["Year"] = df_Rg_year_ind.index.year
         fig = px.line(df_Rg_year_ind, x="Year", y="Games", title='Games For Year',markers=True)
         st.plotly_chart(fig)
-
-
-if option=="Tags":
+#Tags layout
+elif option=="Tags":
     st.title('All :rainbow[Tags] in Steam')
     st.dataframe(df_Tags_Steam,use_container_width=True,hide_index=True,
                  column_config=
@@ -165,8 +165,8 @@ if option=="Tags":
     fig3 = px.pie(df_Tags_Steam, values='Number_Games', names='Tag', title='Tags in Steam')
 
     st.plotly_chart(fig3)
-
-if option=="DataFrame":
+#Df layout
+elif option=="DataFrame":
     #Header
     add_sidebar_release_Month = None
     st.title('Dataframe with the :orange[top 250] for year \n (Jan.2018-August.2023)')
