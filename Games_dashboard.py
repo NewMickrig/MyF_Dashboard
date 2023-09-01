@@ -23,15 +23,15 @@ def style_positve(v,v_compare,props=''):
 #Extract/Load data
 @st.cache_data #You can load data one time
 def load_data():
-    df_Rg_month = pd.read_csv("Data\RG_Month_Steam.csv")
-    df_Rg_year = pd.read_csv("Data\RG_Year_Steam.csv")
-    df_Tags_Steam =pd.read_csv("Data\Tags_Steam.csv")
+    df_Rg_month = pd.read_csv("RG_Month_Steam.csv")
+    df_Rg_year = pd.read_csv("RG_Year_Steam.csv")
+    df_Tags_Steam =pd.read_csv("Tags_Steam.csv")
     
     #Concanate similar files to a sinlge Df
     year_list = [2018,2019,2020,2021,2022,2023]
     dfs = []
     for year in year_list:
-        df = pd.read_csv("Data\Top_RG_{}.csv".format(year))
+        df = pd.read_csv("Top_RG_{}.csv".format(year))
         dfs.append(df)
     df_Toprelease = pd.concat(dfs, ignore_index = True)
     #Transform Data
