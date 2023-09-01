@@ -18,4 +18,4 @@ The project show two DataFrame with the all top 250 and all tags in Steam.
 
 ### Link
 
-See the project [here](https://steamdashboard.streamlit.app/)
+See the project [here🌟](https://steamdashboard.streamlit.app/)
