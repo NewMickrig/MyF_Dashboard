@@ -25,7 +25,7 @@ def style_positve(v,v_compare,props=''):
 @st.cache_data #You can load data one time
 def load_data():
     df_Rg_month = pd.read_csv("RG_Month_Steam.csv")
-    df_Rg_year = pd.read_csv("RG_Year_Steam.csv")
+    df_Rg_year = pd.read_csv('Rg_Year_Steam.csv')
     df_Tags_Steam =pd.read_csv("Tags_Steam.csv")
     
     #Concanate similar files to a sinlge Df
